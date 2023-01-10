@@ -1,0 +1,17 @@
+Day1: 8/1/2023
+Chương1:
+B4:Module
++) muon dung 1 module thi dung voi required('');
++) Cách viết required với nhiều thành phần trong một module.
+B5: Cách in ra thẻ HTML
+B6: sử dụng nodemon để tiến hành tối ưu hóa việc re-server
+Chuong 2: Routing
+B8: 
++)Basic routing url trong nodeJS.
++)Cach lay urlPath bang url thong qua res.
++)Chuyen Trang 
+B9:
++) gop trang
++) routing with switch case
+
+
