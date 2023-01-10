@@ -13,5 +13,11 @@ B8:
 B9:
 +) gop trang
 +) routing with switch case
-
+B11: Express la cac template engine
+B12: cấu trúc tập tin trong một project express
++) trong bin có tập www : dùng để config port cho project
++) 
+B13: tich hop nodemon vao express project de hien thi
+B14: Router can ban
+B15: 
 
