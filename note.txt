@@ -19,5 +19,6 @@ B12: cấu trúc tập tin trong một project express
 +) 
 B13: tich hop nodemon vao express project de hien thi
 B14: Router can ban
-B15: 
+B15: Chia cac trang
+B16: nhung Giao dien
 
