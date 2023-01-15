@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ./elements/header%>
+  </head>
+  <body>
+    <div id="wrapper">
+      <% include ./elements/navbarHeader%>
+      <div
+        class="h-75 d-flex flex-row justify-content-start align-items-center"
+      >
+        <% include ./elements/sidebar%> <%- body %>
+      </div>
+    </div>
+    <% include ./elements/scripts%>
+  </body>
+</html>
