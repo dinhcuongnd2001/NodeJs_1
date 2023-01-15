@@ -1,5 +1,16 @@
-<div class="d-flex w-60">
-  <!-- <% include ./../../elements/sidebar%> -->
+<div class="d-flex w-60 flex-column">
+  <div class="d-flex justify-content-between">
+    <div class="filter">
+      <button class="btn btn-success"><a href="#">All</a></button>
+      <button class="btn btn-info"><a href="#">Active(4)</a></button>
+      <button class="btn btn-secondary"><a href="#">Intive(0)</a></button>
+    </div>
+    <div class="search">
+      <input type="text" />
+      <button class="btn btn-info"><a href="#">search</a></button>
+      <button class="btn btn-danger"><a href="#">clear</a></button>
+    </div>
+  </div>
   <div class="item">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
