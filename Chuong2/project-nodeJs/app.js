@@ -6,9 +6,8 @@ var logger = require("morgan");
 
 var expressLayouts = require("express-ejs-layouts");
 
-var indexRouter = require("./routes/index");
-
 var app = express();
+// var router = require("./routes/backend/index");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -21,9 +20,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/dashboard", require("./routes/dashboard"));
-app.use("/items", require("./routes/items"));
+// app.use("/items", require("./routes/backend/items"));
+app.use("/admin", require("./routes/backend/index"));
+
+// router(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
