@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var expressLayouts = require("express-ejs-layouts");
-
+const systemConfig = require("./configs/system");
 var app = express();
 // var router = require("./routes/backend/index");
 
@@ -20,8 +20,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/items", require("./routes/backend/items"));
-app.use("/admin", require("./routes/backend/index"));
+// local variable
+app.locals.systemConfig = systemConfig;
+
+// config router
+app.use(`/${systemConfig.prefixAdmin}`, require("./routes/backend/index"));
 
 // router(app);
 
