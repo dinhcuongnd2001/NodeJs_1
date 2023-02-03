@@ -21,21 +21,31 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 // mongodb
-var kittySchema = mongoose.Schema({
-  name: String,
+
+const ItemsCollection = require("./schemas/items");
+// const small = new ItemsCollection({
+//   name: "cuong",
+//   status: "1",
+//   ordering: "69",
+// });
+// small.save((err) => {
+//   if (err) return console.error(err);
+// });
+
+// find
+ItemsCollection.find({ name: "cuong" }, (err, result) => {
+  if (err) return console.error(err);
+  console.log(result);
 });
 
-kittySchema.methods.speak = function () {
-  var greeting = this.name ? "Meow name is " + this.name : "I don't have name";
-  console.log(greeting);
-};
-var Kitten = mongoose.model("Kitten", kittySchema);
-var silence = new Kitten({ name: "dncuong" });
-console.log(silence.name);
-silence.save(function (err, silence) {
-  if (err) return console.error(err);
-  silence.speak();
-});
+// c2
+// const query = ItemsCollection.find({ name: "cuong" });
+// query.select("");
+// query.exec((err, result) => {
+//   if (err) return console.error(err);
+//   console.log(result);
+// });
+
 // local variable
 app.locals.systemConfig = systemConfig;
 
