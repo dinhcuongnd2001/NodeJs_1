@@ -6,9 +6,9 @@ var logger = require("morgan");
 
 var expressLayouts = require("express-ejs-layouts");
 const systemConfig = require("./configs/system");
+const mongoose = require("./configs/connect");
 var app = express();
 // var router = require("./routes/backend/index");
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -20,6 +20,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// mongodb
+var kittySchema = mongoose.Schema({
+  name: String,
+});
+
+kittySchema.methods.speak = function () {
+  var greeting = this.name ? "Meow name is " + this.name : "I don't have name";
+  console.log(greeting);
+};
+var Kitten = mongoose.model("Kitten", kittySchema);
+var silence = new Kitten({ name: "dncuong" });
+console.log(silence.name);
+silence.save(function (err, silence) {
+  if (err) return console.error(err);
+  silence.speak();
+});
 // local variable
 app.locals.systemConfig = systemConfig;
 
