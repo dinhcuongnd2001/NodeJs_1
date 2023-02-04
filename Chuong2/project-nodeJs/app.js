@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // mongodb
 
-const ItemsCollection = require("./schemas/items");
+// const ItemsCollection = require("./schemas/items");
 // const small = new ItemsCollection({
 //   name: "cuong",
 //   status: "1",
@@ -33,10 +33,10 @@ const ItemsCollection = require("./schemas/items");
 // });
 
 // find
-ItemsCollection.find({ name: "cuong" }, (err, result) => {
-  if (err) return console.error(err);
-  console.log(result);
-});
+// ItemsCollection.find({ name: "cuong" }, (err, result) => {
+//   if (err) return console.error(err);
+//   console.log(result);
+// });
 
 // c2
 // const query = ItemsCollection.find({ name: "cuong" });

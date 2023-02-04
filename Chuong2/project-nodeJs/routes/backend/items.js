@@ -8,7 +8,21 @@ router.get("/list", function (req, res, next) {
 });
 
 router.get("/", function (req, res, next) {
-  res.send("respond with video router");
+  // ItemsModel la mot doi tuong tham chieu den Items Collection trong db
+  const ItemsModel = require("./../../schemas/items");
+  ItemsModel.find({}, (err, result) => {
+    if (err) return console.error("Error in router Items ", err);
+    res.render("pages/items/index", {
+      title: "this is the index items",
+      items: result,
+    });
+  });
+  // ItemsModel.find({}, "name").then((result) => {
+  //   res.render("pages/items/index", {
+  //     title: "this is the index items",
+  //     items: result,
+  //   });
+  // });
 });
 
 module.exports = router;

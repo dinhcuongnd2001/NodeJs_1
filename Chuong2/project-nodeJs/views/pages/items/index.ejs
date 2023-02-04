@@ -1,0 +1,41 @@
+<div class="main">
+  <h1><%= title%></h1>
+  <!-- <h3><%= JSON.stringify(items)%></h3> -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"><input type="checkbox" /></th>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Ordering</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% items.forEach(function(item, index) { %>
+      <tr>
+        <th scope="row">
+          <input type="checkbox" />
+        </th>
+        <td><%= index+1 %></td>
+        <td><%= item.name %></td>
+
+        <td>
+          <% if(item.status == '1'){ %>
+          <a href="#" class="btn btn-success">Active</a>
+          <% } else{ %>
+          <a href="#" class="btn btn-secondary">Inactive</a>
+          <% } %>
+        </td>
+        <td><%= item.ordering%></td>
+        <td>
+          <a href="#" class="btn btn-warning">Edit</a>
+          <a href="#" class="btn btn-danger">Danger</a>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
