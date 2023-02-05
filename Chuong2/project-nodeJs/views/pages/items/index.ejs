@@ -1,6 +1,15 @@
 <div class="main">
   <h1><%= title%></h1>
   <!-- <h3><%= JSON.stringify(items)%></h3> -->
+
+  <div class="filter">
+    <% statusFilter.forEach(function(item, index) { %>
+    <a href="<%= item.link %>" class="<%= item.class %>">
+      <%= `${item.name}(${item.count})`%>
+    </a>
+    <% }); %>
+  </div>
+
   <table class="table">
     <thead>
       <tr>
