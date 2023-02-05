@@ -4,7 +4,10 @@
 
   <div class="filter">
     <% statusFilter.forEach(function(item, index) { %>
-    <a href="<%= item.link %>" class="<%= item.class %>">
+    <a
+      href="/<%= systemConfig.prefixAdmin %>/items/<%= item.link %>"
+      class="<%= item.class %>"
+    >
       <%= `${item.name}(${item.count})`%>
     </a>
     <% }); %>
@@ -32,7 +35,7 @@
         <td><%= item.name %></td>
 
         <td>
-          <% if(item.status == '1'){ %>
+          <% if(item.status == 'active'){ %>
           <a href="#" class="btn btn-success">Active</a>
           <% } else{ %>
           <a href="#" class="btn btn-secondary">Inactive</a>

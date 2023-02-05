@@ -7,16 +7,14 @@ router.get("/list", function (req, res, next) {
   res.render("pages/items/list", { title: "List Items" });
 });
 
-router.get("/", function (req, res, next) {
+router.get("(/:status)?", function (req, res, next) {
   // ItemsModel la mot doi tuong tham chieu den Items Collection trong db
   const ItemsModel = require("./../../schemas/items");
-  const statusFilter = [
-    { name: "All", count: 4, link: "#", class: "me-3 btn btn-primary" },
-    { name: "Active", count: 2, link: "#", class: "me-3 btn btn-success" },
-    { name: "InActive", count: 2, link: "#", class: "btn btn-warning" },
-  ];
+  const helper = require("./../../helper/utils");
+  const statusFilter = helper.createStatusFilter(ItemsModel);
+  const statusFilterCurrent = req.params.status;
   ItemsModel.find({}, (err, result) => {
-    if (err) return console.error("Error in router I ems ", err);
+    if (err) return console.error("Error in router Items ", err);
     res.render("pages/items/index", {
       title: "this is the index items",
       items: result,
@@ -30,5 +28,10 @@ router.get("/", function (req, res, next) {
   //   });
   // });
 });
+
+// router.get("/:status", (req, res, next) => {
+//   res.send(req.params.status);
+//   res.end();
+// });
 
 module.exports = router;
