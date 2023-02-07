@@ -11,9 +11,17 @@ router.get("(/:status)?", function (req, res, next) {
   // ItemsModel la mot doi tuong tham chieu den Items Collection trong db
   const ItemsModel = require("./../../schemas/items");
   const helper = require("./../../helper/utils");
-  const statusFilter = helper.createStatusFilter(ItemsModel);
-  const statusFilterCurrent = req.params.status;
-  ItemsModel.find({}, (err, result) => {
+  const paramHelper = require("./../../helper/param");
+  let statusFilterCurrent = paramHelper.getParams(req.params, "status", "all");
+  console.log(statusFilterCurrent);
+  const statusFilter = helper.createStatusFilter(
+    ItemsModel,
+    statusFilterCurrent
+  );
+  // ordering: { $gt: 0, $lt: 100 }
+  const conditionFilter =
+    statusFilterCurrent == "all" ? {} : { status: statusFilterCurrent };
+  ItemsModel.find(conditionFilter, (err, result) => {
     if (err) return console.error("Error in router Items ", err);
     res.render("pages/items/index", {
       title: "this is the index items",

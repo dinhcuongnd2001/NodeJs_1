@@ -1,4 +1,4 @@
-const createStatusFilter = (ItemsModel) => {
+const createStatusFilter = (ItemsModel, statusFilterCurrent) => {
   const statusFilter = [
     {
       name: "All",
@@ -12,7 +12,7 @@ const createStatusFilter = (ItemsModel) => {
       value: "active",
       count: 2,
       link: "active",
-      class: "me-3 btn btn-success",
+      class: "me-3 btn btn-default",
     },
     {
       name: "InActive",
@@ -42,6 +42,12 @@ const createStatusFilter = (ItemsModel) => {
       //   each.count = result;
       // });
     }
+  });
+
+  statusFilter.forEach((each) => {
+    each.value == statusFilterCurrent
+      ? (each.class = "me-3 btn btn-success")
+      : "btn btn-default";
   });
   return statusFilter;
 };
