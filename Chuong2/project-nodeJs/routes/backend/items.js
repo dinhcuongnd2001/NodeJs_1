@@ -7,7 +7,7 @@ router.get("/list", function (req, res, next) {
   res.render("pages/items/list", { title: "List Items" });
 });
 
-router.get("(/:status)?", function (req, res, next) {
+router.get("(/status/:status)?", function (req, res, next) {
   // ItemsModel la mot doi tuong tham chieu den Items Collection trong db
   const ItemsModel = require("./../../schemas/items");
   const helper = require("./../../helper/utils");

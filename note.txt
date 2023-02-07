@@ -23,4 +23,7 @@ B15: Chia cac trang
 B16: nhung Giao dien
 
 Chương 3: Mongodb
-
+----------------------------------------------------------------
+Error:
+Xử lý bất đồng bộ filter status: 
+/home/dncuong/Documents/Node_Js_ZendVN/Level_1/Chuong2/project-nodeJs/helper/utils.js

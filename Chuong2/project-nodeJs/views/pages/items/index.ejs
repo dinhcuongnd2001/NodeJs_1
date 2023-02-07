@@ -5,7 +5,7 @@
   <div class="filter">
     <% statusFilter.forEach(function(item, index) { %>
     <a
-      href="/<%= systemConfig.prefixAdmin %>/items/<%= item.link %>"
+      href="/<%= systemConfig.prefixAdmin %>/items/status/<%= item.link %>"
       class="<%= item.class %>"
     >
       <%= `${item.name}(${item.count})`%>
