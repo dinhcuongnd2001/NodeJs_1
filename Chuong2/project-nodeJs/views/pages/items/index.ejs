@@ -2,15 +2,29 @@
   <h1><%= title%></h1>
   <!-- <h3><%= JSON.stringify(items)%></h3> -->
 
-  <div class="filter">
+  <div class="filter d-flex flex-wrap">
     <% statusFilter.forEach(function(item, index) { %>
     <a
-      href="/<%= systemConfig.prefixAdmin %>/items/status/<%= item.link %>"
+      href="/<%= systemConfig.prefixAdmin %>/items/<%= item.link %>"
       class="<%= item.class %>"
     >
       <%= `${item.name}(${item.count})`%>
     </a>
     <% }); %>
+    <div class="input-group">
+      <form action="">
+        <input
+          name="search"
+          type="search"
+          value="<%= searchCurrent %>"
+          class="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+        <button type="submit" class="btn btn-outline-primary">search</button>
+      </form>
+    </div>
   </div>
 
   <table class="table">
