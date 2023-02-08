@@ -39,6 +39,7 @@ router.get("(/:status)?", function (req, res, next) {
       items: result,
       statusFilter: statusFilter,
       searchCurrent,
+      statusFilterCurrent,
     });
   });
   // ItemsModel.find({}, "name").then((result) => {

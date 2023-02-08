@@ -3,11 +3,11 @@
   <!-- <h3><%= JSON.stringify(items)%></h3> -->
 
   <div class="filter d-flex flex-wrap">
-    <% statusFilter.forEach(function(item, index) { %>
-    <a
-      href="/<%= systemConfig.prefixAdmin %>/items/<%= item.link %>"
-      class="<%= item.class %>"
-    >
+    <%statusFilter.forEach(function(item, index) { let link =
+    systemConfig.prefixAdmin + '/items/' + item.link ; if(searchCurrent !== ''
+    && searchCurrent !== undefined) { link += '?search=' + searchCurrent; } %>
+
+    <a href="/<%=link %>" class="<%= item.class %>">
       <%= `${item.name}(${item.count})`%>
     </a>
     <% }); %>
@@ -23,6 +23,15 @@
           aria-describedby="search-addon"
         />
         <button type="submit" class="btn btn-outline-primary">search</button>
+        <button type="button" class="btn btn-outline-danger">
+          <a
+            href="/<%= systemConfig.prefixAdmin %>/items/<%= statusFilterCurrent %>"
+            >Delete</a
+          >
+        </button>
+        <button type="button" class="btn btn-outline-warning">
+          <a href="/<%= systemConfig.prefixAdmin %>/items/all %>">Reload</a>
+        </button>
       </form>
     </div>
   </div>
