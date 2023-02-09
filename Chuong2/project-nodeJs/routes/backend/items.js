@@ -32,16 +32,18 @@ router.get("(/:status)?", function (req, res, next) {
         };
 
   // console.log("condition:", conditionFilter);
-  ItemsModel.find(conditionFilter, (err, result) => {
-    if (err) return console.error("Error in router Items ", err);
-    res.render("pages/items/index", {
-      title: "this is the index items",
-      items: result,
-      statusFilter: statusFilter,
-      searchCurrent,
-      statusFilterCurrent,
+  ItemsModel.find(conditionFilter)
+    .sort({ name: 1 })
+    .then((result) => {
+      // if (err) return console.error("Error in router Items ", err);
+      res.render("pages/items/index", {
+        title: "this is the index items",
+        items: result,
+        statusFilter: statusFilter,
+        searchCurrent,
+        statusFilterCurrent,
+      });
     });
-  });
   // ItemsModel.find({}, "name").then((result) => {
   //   res.render("pages/items/index", {
   //     title: "this is the index items",
