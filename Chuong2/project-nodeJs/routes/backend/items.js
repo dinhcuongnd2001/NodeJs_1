@@ -18,6 +18,13 @@ router.get("(/:status)?", function (req, res, next) {
     ItemsModel,
     statusFilterCurrent
   );
+  const variablePanigation = require("../../helper/pagination");
+  // console.log("in: ", variablePanigation.totalElement);
+  // const AllElement = async () => {
+  //   const data = await variablePanigation.totalElement;
+  //   return data;
+  // };
+  // console.log("in", AllElement);
   // ordering: { $gt: 0, $lt: 100 }
   const conditionFilter =
     statusFilterCurrent == "all"
