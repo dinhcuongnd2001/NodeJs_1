@@ -75,24 +75,7 @@
   </table>
 
   <div class="footer">
-    <div class="panigition d-flex justify-content-between">
-      <div>Panigition</div>
-      <div class="d-flex gap-3">
-        <div class="total">Total entries</div>
-        <div class="total">Total Page</div>
-      </div>
-    </div>
-    <div class="info d-flex justify-content-between">
-      <div class="">
-        <p>Number of page ...</p>
-        <p>Showing ... to ... of ... elements</p>
-      </div>
-      <div d-flex>
-        <div>Start</div>
-        <div>Previous</div>
-        <div>Next</div>
-        <div>End</div>
-      </div>
-    </div>
+    <% include ./../../helper/panigation%> <%-
+    panigationHelper(variablePanigation)%>
   </div>
 </div>

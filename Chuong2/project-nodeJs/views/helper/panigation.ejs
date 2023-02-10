@@ -1,0 +1,29 @@
+<% panigationHelper = (variablePanigation) => { let totalPage =
+Math.ceil(variablePanigation.totalElement/variablePanigation.numberElementPerPage);
+let ItemsPerPage = variablePanigation.numberElementPerPage ; let currentPage =
+variablePanigation.currentPage; let to = ItemsPerPage*currentPage >
+variablePanigation.totalElement ? variablePanigation.totalElement :
+ItemsPerPage*currentPage;let from = to - ItemsPerPage + 1; return `
+<div class="panigition d-flex justify-content-between">
+  <div>Panigition</div>
+  <div class="d-flex gap-3">
+    <div class="total">Total entries ${variablePanigation.totalElement}</div>
+    <div class="total">Total Page ${totalPage}</div>
+  </div>
+</div>
+
+<div class="info d-flex justify-content-between">
+  <div class="">
+    <p>Number of page ...</p>
+    <p>
+      Showing ${from} to ${to} of ${variablePanigation.totalElement} elements
+    </p>
+  </div>
+  <div d-flex>
+    <div>Start</div>
+    <div>Previous</div>
+    <div>Next</div>
+    <div>End</div>
+  </div>
+</div>
+` } %>

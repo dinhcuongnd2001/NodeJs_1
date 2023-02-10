@@ -14,18 +14,6 @@ router.get("(/:status)?", function (req, res, next) {
   const paramHelper = require("./../../helper/param");
   let statusFilterCurrent = paramHelper.getParams(req.params, "status", "all");
   let searchCurrent = paramHelper.getParams(req.query, "search", "");
-  const statusFilter = helper.createStatusFilter(
-    ItemsModel,
-    statusFilterCurrent
-  );
-  const variablePanigation = require("../../helper/pagination");
-  // console.log("in: ", variablePanigation.totalElement);
-  // const AllElement = async () => {
-  //   const data = await variablePanigation.totalElement;
-  //   return data;
-  // };
-  // console.log("in", AllElement);
-  // ordering: { $gt: 0, $lt: 100 }
   const conditionFilter =
     statusFilterCurrent == "all"
       ? searchCurrent == ""
@@ -38,9 +26,29 @@ router.get("(/:status)?", function (req, res, next) {
           name: { $regex: searchCurrent, $options: "i" },
         };
 
-  // console.log("condition:", conditionFilter);
+  const statusFilter = helper.createStatusFilter(
+    ItemsModel,
+    statusFilterCurrent
+  );
+  const variablePanigation = require("../../helper/pagination");
+  const ItemsPerPage = variablePanigation.numberElementPerPage;
+  variablePanigation.currentPage = parseInt(
+    paramHelper.getParams(req.query, "page", 1)
+  );
+  // let totalElements = variablePanigation.totalElement;
+  ItemsModel.count(conditionFilter).then((data) => {
+    // totalElements = data;
+    variablePanigation.totalElement = data;
+  });
+
+  // ordering: { $gt: 0, $lt: 100 }
+
+  // console.log(totalElements);
+
   ItemsModel.find(conditionFilter)
     .sort({ name: 1 })
+    .limit(ItemsPerPage)
+    .skip((variablePanigation.currentPage - 1) * ItemsPerPage)
     .then((result) => {
       // if (err) return console.error("Error in router Items ", err);
       res.render("pages/items/index", {
@@ -49,6 +57,7 @@ router.get("(/:status)?", function (req, res, next) {
         statusFilter: statusFilter,
         searchCurrent,
         statusFilterCurrent,
+        variablePanigation,
       });
     });
   // ItemsModel.find({}, "name").then((result) => {
