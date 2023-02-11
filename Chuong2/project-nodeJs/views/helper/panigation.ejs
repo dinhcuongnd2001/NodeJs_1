@@ -12,6 +12,20 @@
   let xhtmlPrevious = `<button class="disable"><a>Previous</a></button>`;
   let xhtmlPages = '';
   let xhtmlEnd = `<button class="disable"><a>End</a></button>`;
+  let pageRange = variablePanigation.pageRange;
+  let middle = Math.ceil(pageRange/2);  
+  let min = currentPage - middle + 1 ;
+  let max = min + pageRange - 1;
+  if(min <= 1){
+    min =1;
+    max = pageRange;
+  } 
+
+  if(max > totalPage ) {
+    max = totalPage;
+    min = max - pageRange + 1;
+  }
+
   if(currentPage > 1) {
     xhtmlStart = `<button><a href="/${link}?page=1">Start</a></button>`;
     xhtmlPrevious = `<button><a href="/${link}?page=${currentPage - 1}">Previous</a></button>`;
@@ -21,6 +35,17 @@
   if(currentPage < totalPage) {
     xhtmlEnd = `<button><a href="/${link}?page=${totalPage}">End</a></button>`;
     xhtmlNext = `<button><a href="/${link}?page=${currentPage + 1}">Next</a></button>`;
+  }
+
+  for(let i = min; i <= max ; i++) {
+    if(i == currentPage) {
+      xhtmlPages += `<button class='btn btn-success'><a href="/${link}?page=${i}"> ${i}</a></button>`
+
+    }
+    else  {
+      xhtmlPages += `<button><a href="/${link}?page=${i}"> ${i}</a></button>`
+
+    }
   }
   let xhtmlPanigation = '<div class="d-flex gap-2">' + xhtmlStart + xhtmlPrevious + xhtmlPages + xhtmlNext + xhtmlEnd + '</div>'; 
 
